@@ -1,0 +1,17 @@
+{% extends "layout.html" %} {% block title %}Home{% endblock %} {% block head %}
+{{ super() }} {% endblock %} {% block logIn %}
+<a class="nav-link" href="{{ url_for('auth_login') }}">Iniciar sesión</a>
+{% endblock %} {% block content %} {% if is_authenticated(session) %}
+
+<h1>Inicio</h1>
+
+{% else %} {% if sitio.activo is false %}
+<div>
+  <h1 style="text-align: center">El sitio se encuentra en mantenimiento</h1>
+  <img
+    id="img"
+    src="{{ url_for('static', filename='mantenimiento.png') }}"
+    alt="imagen página en mantenimiento"
+  />
+</div>
+{% endif %} {% endif %} {% endblock %}
